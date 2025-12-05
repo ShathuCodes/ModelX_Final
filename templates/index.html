@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Impact Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>News Impact Dashboard</h1>
+            <div class="controls">
+                <input type="text" id="searchInput" placeholder="Search news...">
+                <select id="clusterFilter">
+                    <option value="all">All Topics</option>
+                    <!-- Populated dynamically -->
+                </select>
+                <button id="refreshBtn">Refresh Data</button>
+            </div>
+        </header>
+
+        <section class="metrics-grid">
+            <div class="card metric-card">
+                <h3>Total Articles</h3>
+                <p id="totalArticles">0</p>
+            </div>
+            <div class="card metric-card risk">
+                <h3>High Risk</h3>
+                <p id="highRiskCount">0</p>
+            </div>
+            <div class="card metric-card opportunity">
+                <h3>High Opportunity</h3>
+                <p id="highOppCount">0</p>
+            </div>
+            <div class="card metric-card event">
+                <h3>Major Events</h3>
+                <p id="majorEventsCount">0</p>
+            </div>
+        </section>
+
+        <section class="charts-grid">
+            <div class="card chart-card">
+                <h3>Sentiment Distribution</h3>
+                <canvas id="sentimentChart"></canvas>
+            </div>
+            <div class="card chart-card">
+                <h3>Impact vs. Sentiment</h3>
+                <canvas id="impactChart"></canvas>
+            </div>
+        </section>
+
+        <section class="news-feed">
+            <h2>Latest News</h2>
+            <div id="newsList" class="news-list">
+                <!-- Populated dynamically -->
+            </div>
+        </section>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+
+</html>
